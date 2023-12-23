@@ -71,13 +71,13 @@ def checkForUpdates(savedObjects: list, latestObjects: list) -> bool:
     """
     anyChanges = False
     for object in latestObjects:
+        printObject = False
         found = [ obj for obj in savedObjects if obj['id'] == object['id'] ]
         if len(found) == 0:
             # new object
             anyChanges = True
             print(f"WARNING: New threat: {object['fullname']}")
-            print(f"Impact date {object['range']}, " \
-                  f"Palermo = {object['ps_cum']}, Torino = {object['ts_max']}\n")
+            printObject = True
         else:
             savedObject = found[0]
             if (float(object['ps_cum']) > float(savedObject['ps_cum'])
@@ -87,8 +87,11 @@ def checkForUpdates(savedObjects: list, latestObjects: list) -> bool:
                 # object threat level has increased
                 anyChanges = True
                 print(f"WARNING: Increased threat: {object['fullname']}")
-                print(f"Impact date {object['range']}, " \
-                      f"Palermo = {object['ps_cum']}, Torino = {object['ts_max']}\n")
+                printObject = True
+        if printObject:
+            print(f"Impact date {object['range']}, " \
+                f"Palermo = {object['ps_cum']}, Torino = {object['ts_max']}\n" \
+                f"Details: https://cneos.jpl.nasa.gov/sentry/details.html#?des={object['des']}\n")
     return anyChanges
 
 
@@ -106,7 +109,7 @@ try:
     writeSavedData(latestObjects)
 
     if anyChanges:
-        # Play an annoyingly loud alert sound. (No error if the file is missing)
+        # Play an obnoxiously loud alert sound. (No error if the file is missing)
         try:
             playsound.playsound(os.path.join(cmdDir, 'alert.mp3'))
         except:
