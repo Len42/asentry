@@ -115,16 +115,14 @@ try:
             playsound.playsound(os.path.join(cmdDir, 'alert.mp3'))
         except:
             pass
-        # Keep the window open for the user to read the messages.
-        print('[press Enter]')
-        input()
+        exitCode = 1
     else:
         print('No new threats')
-        time.sleep(3)
+        exitCode = 0
 
 except BaseException as ex:
     print(f'{cmdName}: Error: {ex}')
     traceback.print_tb(ex.__traceback__)
-    # Keep the window open for the user to read the error message.
-    print('\n[press Enter]')
-    input()
+    exitCode = 2
+
+sys.exit(exitCode)
