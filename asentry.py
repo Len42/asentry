@@ -18,6 +18,7 @@
 
 import sys
 import os.path
+import time
 import traceback
 import json
 import requests
@@ -119,6 +120,7 @@ try:
         input()
     else:
         print('No new threats')
+        time.sleep(3)
 
 except BaseException as ex:
     print(f'{cmdName}: Error: {ex}')
