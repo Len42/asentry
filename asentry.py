@@ -111,10 +111,12 @@ try:
 
     if anyChanges:
         # Play an obnoxiously loud alert sound. (No error if the file is missing)
-        try:
-            playsound.playsound(os.path.join(cmdDir, 'alert.mp3'))
-        except:
-            pass
+        soundFile = os.path.join(cmdDir, 'alert.mp3')
+        if os.path.isfile(soundFile):
+            try:
+                playsound.playsound(soundFile)
+            except:
+                pass
         exitCode = 1
     else:
         print('No new threats')
