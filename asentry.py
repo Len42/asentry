@@ -18,11 +18,10 @@
 
 import sys
 import os.path
-import time
 import traceback
 import json
 import requests
-import playsound
+import playsound3
 
 def configFilePath() -> str: return os.path.join(os.path.expanduser('~'), '.asentry')
 
@@ -114,7 +113,7 @@ try:
         soundFile = os.path.join(cmdDir, 'alert.mp3')
         if os.path.isfile(soundFile):
             try:
-                playsound.playsound(soundFile)
+                playsound3.playsound(soundFile)
             except:
                 pass
         exitCode = 1
