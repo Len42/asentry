@@ -20,4 +20,8 @@ Sample output:
     Impact date 2071-2124, Palermo = -3.30, Torino = 0
     Details: https://cneos.jpl.nasa.gov/sentry/details.html#?des=2024 BY15
 
+PyPI modules required:
+- requests
+- playsound3
+
 Copyright 2023 Len Popp - see LICENSE
