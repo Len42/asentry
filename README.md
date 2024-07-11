@@ -1,11 +1,14 @@
 # asentry
 
-## Monitor the JPL Sentry database for asteroid impact threats
+## Software to warn of potential asteroid impacts
 
 This program downloads a list of potential Earth-threatening asteroids
 from NASA JPL's [Sentry](https://cneos.jpl.nasa.gov/sentry/) service
 and displays an alert message if there are any new or increased threats
 since the last time it ran.
+
+<i>(For a stand-alone device to do the same thing,
+[click here](https://github.com/Len42/asentry-gadget?tab=readme-ov-file#asentry-gadget).)</i>
 
 If there is a sound file named "alert.mp3" in this directory, it will be
 played when a warning message is displayed.
